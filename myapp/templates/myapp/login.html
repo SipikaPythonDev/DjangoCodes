@@ -1,0 +1,33 @@
+{% extends 'myapp/index.html' %}
+
+{% block content %}
+	<div class="body">
+		<div class="register">
+			<div>
+				<div>
+					<div class="register">
+						<h2>BE A CAMPER TODAY!</h2>
+
+						<h2 style = "color:red;">{{status}}</h2>
+						<form action="Login" method="post">
+							<div>
+								{% csrf_token %}
+
+
+									<label for="uname">UserName</label>
+    								<input type="text" id="uname" name="uname" placeholder="User Name" >
+
+									<label for="pass">Password</label>
+    								<input type="text" id="pass" name="pass" placeholder="Password">
+
+
+							</div>
+							<input type="submit" id="submit" value="Signin">
+						</form>
+
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+  crossorigin="anonymous"></script>
+    <title>Medic API Call for Symptoms</title>
+</head>
+<body>
+
+<h1>Welcome user... Please Select your Symptom First to proceed with us</h1>
+<label for="symptom">Choose Symptom</label>
+
+<form action="http://127.0.0.1:8000/Daignosis/" method="POST">
+{% csrf_token %}
+
+    <select id="symptom">
+    {% for key,value in dict.items %}
+        <option value={{value}}>{{key}}</option>
+    {% endfor %}
+    </select><br>
+
+    <input type="hidden" value='' id="symid" name = 'symid'/><br>
+    <input type="text" id="age" name="age" placeholder="Enter Age"/><br>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" name="gender" value="other">
+    <label for="other">Other</label><br>
+
+    <button type="submit" id="sub">Submit</button>
+
+
+
+
+</form>
+
+<script type='text/javascript'>
+$(function() {
+    $('#symptom').change(function() {
+        var x = $('#symptom').val();
+        // and update the hidden input's value
+        $('#symid').val(x);
+
+    });
+});
+</script>
+
+<div class="container">
+  <h2>Diagnosis</h2>
+  <p>List of Issues</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>IcdName</th>
+        <th>ProfName</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for x in issue %}
+      <tr>
+        <td>{{x.get_name}}</td>
+        <td>{{x.get_icd}}</td>
+        <td>{{x.get_pname}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+ <!--<script type="text/javascript">
+        function getOption() {
+            selectElement =
+                    document.querySelector('#symptom');
+
+            output = selectElement.options[selectElement.selectedIndex].value;
+            console.log(output)
+        }
+    </script>-->
+
+
+</body>
+</html>

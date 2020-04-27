@@ -1,0 +1,38 @@
+{% extends 'myapp/index.html' %}
+{% block content %}
+	<div class="body">
+		<div class="register">
+			<div>
+				<div>
+					<div class="register">
+						<h2>BE A CAMPER TODAY!</h2>
+
+                        <h3 style="font-color:#B22222; font-size: large;">{{data}}</h3>
+                        <form action="Profile" method="post">
+							<div>
+								{% csrf_token %}
+
+
+									<label for="hobby">Hobbies</label>
+    								<input type="text" id="hobby" name="hobby" placeholder="Enter Your Hobbies" ngModel>
+
+									<label for="IA">Interest Area</label>
+    								<input type="text" id="IA" name="IA" placeholder="What's Your Interst Area" ngModel>
+
+									<label for="loc">Location</label>
+    								<input type="text" id="loc" name="loc" placeholder="Enter Your Current Location" ngModel>
+
+									<label for="FA">Fav. Author</label>
+    								<input type="text" id="FA" name="FA" placeholder="Favourite Author" ngModel><br>
+
+
+							</div>
+							<input type="submit" id="submit" value="Register">
+</form>
+
+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
