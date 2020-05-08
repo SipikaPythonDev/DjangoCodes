@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from myapp import views
@@ -33,6 +33,8 @@ urlpatterns = [
     url('paymentMode/', views.paymentMode, name='handle'),
     url('MedicCall/', views.MedicApi, name='medic'),
     url('Daignosis/', views.Diagnosis, name='daignose'),
-    url('ProductShow/', views.pproducts, name='pp'),
+    #url('ProductShow/', views.pproducts, name='pp'),
+    path('', include('myapp.urls')),
+    #path('ProductShow/<int:id>',views.cart,name='cart'),
     path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

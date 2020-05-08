@@ -234,5 +234,12 @@ def Diagnosis(request):
 
 def pproducts(request):
     result = Products.objects.all()
-    print(result)
-    return render(request,'myapp/Productss.html')
+    #print(result)
+    return render(request,'myapp/Productss.html',{'result':result})
+
+def cart(request,pk):
+    print(pk)
+    result = Products.objects.filter(pk=pk)
+    print(result.pname)
+
+    return render(request,'myapp/Cart.html')
