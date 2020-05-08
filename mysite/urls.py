@@ -33,5 +33,6 @@ urlpatterns = [
     url('paymentMode/', views.paymentMode, name='handle'),
     url('MedicCall/', views.MedicApi, name='medic'),
     url('Daignosis/', views.Diagnosis, name='daignose'),
+    url('ProductShow/', views.pproducts, name='pp'),
     path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -14,7 +14,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic.base import View
 
-from myapp.models import Profile
+from myapp.models import Profile, Products
 from myapp.tokens import account_activation_token
 from PayTm import Checksum
 MERCHANT_KEY = "i4Qc9KFWqeLapGSz"
@@ -166,7 +166,7 @@ class ActivateAccount(View):
 def paymentMode(request):
     param_dict = {
         "MID": "Zjfrqs35148164910675",
-        "ORDER_ID": "101",
+        "ORDER_ID": "1012",
         "CUST_ID": "809",
         "TXN_AMOUNT": "2",
         "CHANNEL_ID": "WEB",
@@ -231,3 +231,8 @@ def Diagnosis(request):
 
 
     return render(request, "myapp/medicapi.html",{"issue":listt,"dict":dict})
+
+def pproducts(request):
+    result = Products.objects.all()
+    print(result)
+    return render(request,'myapp/Productss.html')

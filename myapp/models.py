@@ -17,6 +17,20 @@ class Profile(models.Model):
     location = models.CharField(max_length=225)
     fav_author = models.CharField(max_length=225)
 
+class Products(models.Model):
+    pname = models.CharField(max_length=225)
+    price = models.IntegerField()
+    rating = models.CharField(max_length=225)
+    vendor = models.CharField(max_length=225)
+    type = models.CharField(max_length=225)
+
+class Cart(models.Model):
+    pid = models.ForeignKey(Products,on_delete=models.PROTECT)
+    pname = models.CharField(max_length=225)
+    Quantity = models.IntegerField(max_length=100)
+    total_price = models.CharField(max_length=225)
+
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
