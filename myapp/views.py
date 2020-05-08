@@ -237,9 +237,9 @@ def pproducts(request):
     #print(result)
     return render(request,'myapp/Productss.html',{'result':result})
 
-def cart(request,pk):
+def display(request,pk):
+
     print(pk)
     result = Products.objects.filter(pk=pk)
-    print(result.pname)
 
-    return render(request,'myapp/Cart.html')
+    return render(request,'myapp/Cart.html',{'result':result})
