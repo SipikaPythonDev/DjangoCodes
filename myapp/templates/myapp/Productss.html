@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products to display</title>
+</head>
+<body>
+
+{%for rs in result%}
+        {% csrf_token %}
+    <h1>{{rs.pname}}</h1>
+    <h3>{{rs.price}}</h3>
+    <p>{{rs.vendor}}</p><br>
+        <a href="{% url 'display' pk=rs.id %}" role="button">Add to Cart</a>
+
+
+{% endfor %}
+</body>
+</html>
